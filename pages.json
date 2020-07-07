@@ -1,0 +1,109 @@
+{
+	"pages": [
+		{
+			"path": "pages/home/index",
+			"style": {}
+		},
+		{
+			"path": "pages/home/search",
+			"style": {}
+		},
+        {
+            "path" : "pages/home/list",
+            "style" : {}
+        },
+		{
+			"path": "pages/home/detail",
+			"style": {}
+		},
+		{
+			"path": "pages/coupon/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {}
+		},
+		{
+            "path" : "pages/my/profile",
+            "style" : {}
+        },
+		{
+            "path" : "pages/my/follow",
+            "style" : {}
+        },
+		{
+            "path" : "pages/my/agree",
+            "style" : {}
+        },
+		{
+            "path" : "pages/my/agent/apply",
+            "style" : {}
+        },
+		{
+            "path" : "pages/my/shop/apply",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/my/agent/index",
+            "style" : {}
+        }
+    ],
+	"globalStyle": {
+		"mp-alipay": {
+			/* 支付宝小程序特有相关 */
+			"transparentTitle": "always",
+			"allowsBounceVertical": "NO"
+		},
+		"navigationBarBackgroundColor": "#0081ff",
+		"navigationBarTitleText": "付乐吧",
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "white"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"color": "#000000",
+		"selectedColor": "#FF4F07",
+		"list": [
+			{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-fill.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/coupon/index",
+				"iconPath": "static/tabbar/coupons.png",
+				"selectedIconPath": "static/tabbar/coupons-fill.png",
+				"text": "优惠券"
+			},
+			{
+				"pagePath": "pages/my/index",
+				"iconPath": "static/tabbar/account.png",
+				"selectedIconPath": "static/tabbar/account-fill.png",
+				"text": "我的"
+			}
+		]
+	},
+	"usingComponts": true,
+	"condition": {
+	    "current": 0,
+	    "list": [
+			{
+	            "name": "home",
+	            "path": "pages/home/index"
+	        },
+			{
+	            "name": "my",
+	            "path": "pages/my/index"
+	        },
+			{
+	            "name": "agent",
+	            "path": "pages/my/agent/index"
+	        }
+	    ]
+	}
+}
