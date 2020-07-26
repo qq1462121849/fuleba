@@ -5,37 +5,22 @@ export default class Permission {
 	}
 
 	async request() {
-		try {
-			const result = await this.check();
-			return result;
-		} catch (e) {
-			console.log(e)
-			uni.showToast({
-				title: e.message,
-				icon: 'none'
-			})
-			return false;
-		}
+		
+		return	await this.check();
+			
 	}
 
 	async check() {
 		const [settingError, settingRes] = await uni.getSetting();
 		console.log(settingError, settingRes);
-		if (settingError) {
-			throw new Error(settingError.errMsg);
-		}
+		
 
 		// 首次授权
 		if (!settingRes.authSetting.hasOwnProperty(this.permissionID)) {
 			const [authError, authRes] = await uni.authorize({
 				scope: this.permissionID
 			})
-			console.log(authError, authRes);
-			if (authError) {
-				throw new Error('授权取消');
-			}
-
-			return true;
+			return authError?false:true;
 		}
 
 		// 已授权
@@ -52,23 +37,12 @@ export default class Permission {
 			content: this.permissionDes,
 		});
 		
-		if (error) {
-			throw new Error(error.errMsg);
-		}
-		
-		if (res.cancel === true) {
-			throw new Error('已取消设置');
-		}
-		
+		if (res.cancel) return   
+		let resq = await uni.openSetting();
+		return console.log(resq,'11111111111111')
 		const [openSettingError, openSettingRes] = await uni.openSetting();
 		console.log(openSettingError, openSettingRes);
-		if (openSettingError) {
-			throw new Error(openSettingError.errMsg);
-		}
-		if (!openSettingRes.authSetting[this.permissionID]) {
-			throw new Error('授权失败');
-		}
 		
-		return true;
+		return openSettingRes.authSetting[this.permissionID];
 	}
 }

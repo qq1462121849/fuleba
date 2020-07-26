@@ -42,8 +42,8 @@
 			async getshops() {
 				const permission = new Permission('scope.userLocation', '需要在设置中获取定位权限');
 				const result = await permission.request();
-				if (!result) {
-					return;
+				if (!result) {//根据返回值判断是否授权成功
+					return this.toast('授权失败');
 				}
 
 				const [locationError, locationRes] = await uni.getLocation({
